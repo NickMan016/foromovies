@@ -1,0 +1,14 @@
+.footer {
+	background: #1a1a1a;
+	margin-top: 40px;
+}
+
+.contenedor__footer {
+	width: 1100px;
+	margin: auto;
+	padding: 20px 0;
+}
+
+.contenedor__footer .footer__derecha {
+	float: right;
+}

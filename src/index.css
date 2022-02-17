@@ -1,0 +1,31 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+	position: relative;
+	width: 100%;
+	background: #303030;
+	color: #fff;
+	overflow-y: scroll;
+}
+
+/* ---------------------------------- */
+/* ----------- Contenedor ----------- */
+/* ---------------------------------- */
+
+.contenedor {
+	position: absolute;
+	left: 78px;
+	width: calc(100% - 78px);
+	transition: all .5s ease;
+}
+
+.menu.active ~ .contenedor {
+	width: calc(100% - 240px);
+	left: 240px;
+}
+

@@ -1,0 +1,204 @@
+.menu {
+	z-index: 99;
+	position: fixed;
+	height: 100%;
+	top: 0;
+	left: 0;
+	width: 78px;
+	background: #1a1a1a;
+	padding: 6px 14px;
+	transition: all .5s ease;
+}
+
+.menu.active {
+	width: 240px;
+}
+
+.menu .contenedor__logo .logo {
+	display: flex;
+	/* padding: 0 5px; */
+	margin-top: 10px;
+	height: 50px;
+	width: 100%;
+	color: #fff;
+	align-items: center;
+	opacity: 0;
+	pointer-events: none;
+	transition: all .5s ease;
+}
+
+.menu.active .contenedor__logo .logo {
+	opacity: 1;
+	pointer-events: none;
+}
+
+.contenedor__logo .logo i {
+	font-size: 20px;
+	margin-right: 5px;
+}
+
+.contenedor__logo .logo .nombre__logo {
+	font-size: 20px;
+	font-weight: 400;
+	color: #fff;
+	text-decoration: none;
+}
+
+.menu .menu__btn {
+	position: absolute;
+	color: #fff;
+	left: 50%;
+	top: 16px;
+	font-size: 20px;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	border-radius: 12px;
+	transform: translateX(-50%);
+	transition: all .4s ease;
+	cursor: pointer;
+}
+
+.menu .menu__btn:hover {
+	background: #fff;
+	color: #1a1a1a;
+}
+
+.menu.active .menu__btn {
+	left: 90%;
+}
+
+.menu.active .menu__btn:hover {
+	background: none;
+	color: #fff;
+}
+
+.menu .menu__lista {
+	margin-top: 10px;
+	list-style: none;
+	position: relative;
+	height: calc(100% - 64px);
+}
+
+.menu .menu__lista li {
+	position: relative;
+	height: 50px;
+	width: 100%;
+	margin-bottom: 10px;
+	line-height: 50px;
+}
+
+.menu .menu__lista li.item__ultimo {
+	position: absolute;
+	bottom: 10px;
+}
+
+.menu .menu__lista input {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	padding-left: 50px;
+	padding-right: 16px;
+	border-radius: 12px;
+	outline: none;
+	border: none;
+	font-size: 18px;
+	background: none;
+	color: #fff;
+}
+
+.menu.active .menu__lista input {
+	background: #424242;
+}
+
+.menu .menu__lista li .tooltip {
+	position: absolute;
+	height: 35px;
+	width: 122px;
+	left: 122px;
+	top: 0;
+	transform: translate(-50%, -50%);
+	background: #fff;
+	color: #1a1a1a;
+	border-radius: 6px;
+	line-height: 35px;
+	text-align: center;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+	transition: 0s;
+	opacity: 0;
+	pointer-events: none;
+	display: block;
+}
+
+.menu .menu__lista li:hover .tooltip {
+	top: 50%;
+	opacity: 1;
+	transition: all .5s ease;
+}
+
+.menu.active .menu__lista li .tooltip {
+	display: none;
+}
+
+.menu .menu__lista li .icono__buscar {
+	position: absolute;
+	z-index: 99;
+	color: #fff;
+	font-size: 18px;
+	transition: all .5s ease;
+}
+
+.menu .menu__lista li .icono__buscar:hover {
+	background: #fff;
+	color: #1a1a1a;
+	cursor: pointer;
+}
+
+.menu.active .menu__lista li .icono__buscar:hover {
+	background: none;
+	color: #fff;
+}
+
+.menu .menu__lista li a {
+	color: #fff;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	border-radius: 12px;
+	white-space: nowrap;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all .4s ease;
+}
+
+.menu .menu__lista li a:hover {
+	color: #1a1a1a;
+	background: #fff;
+}
+
+.menu .menu__lista li a.active {
+	color: #1a1a1a;
+	background: #fff;
+}
+
+.menu .menu__lista li i {
+	height: 50px;
+	min-width: 50px;
+	border-radius: 12px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.menu .nombre__enlace {
+	opacity: 0;
+	pointer-events: none;
+	transition: all .5s ease;
+}
+
+.menu.active .nombre__enlace {
+	opacity: 1;
+	pointer-events: auto;
+}
