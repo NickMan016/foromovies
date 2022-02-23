@@ -4,11 +4,34 @@ import movieDBApi from "../../api/movieDB";
 
 export default function MovieDBProvider({ children }) {
     const [carousel, setCarousel] = useState([]);
+    const [busqueda, setBusqueda] = useState([]);
     const [peliculas, setPeliculas] = useState([]);
     const [series, setSeries] = useState([]);
     const [pelicula, setPelicula] = useState([]);
     const [serie, setSerie] = useState([]);
     const [episodes, setEpisodes] = useState([]);
+
+    const find = async ( query ) => {
+        try {
+            const peliculasResponse = await movieDBApi('/search/movie', `${query}`);
+            const seriesResponse = await movieDBApi('/search/tv', `${query}`);
+            const busquedaResponse = [];
+
+            await peliculasResponse.data.results?.map((value, index) => {
+                value.type = 0;
+                busquedaResponse.push(value);
+            });
+
+            await seriesResponse.data.results?.map((value, index) => {
+                value.type = 1;
+                busquedaResponse.push(value);
+            });
+
+            setBusqueda(busquedaResponse);
+        } catch (error) {
+            setBusqueda([]);
+        }
+    }
 
     const getPeliculas = async ( params ) => {
         try {
@@ -64,7 +87,7 @@ export default function MovieDBProvider({ children }) {
     }
 
     return (
-        <MovieDBContext.Provider value={{ getPelicula, getSerie, getPeliculas, getSeries, getEpisodes, reset, pelicula, serie, peliculas, series, episodes }}>
+        <MovieDBContext.Provider value={{ find, getPelicula, getSerie, getPeliculas, getSeries, getEpisodes, reset, busqueda, pelicula, serie, peliculas, series, episodes }}>
             {children}
         </MovieDBContext.Provider>
     );

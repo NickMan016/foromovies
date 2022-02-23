@@ -8,7 +8,7 @@ export default function Popular({ data, isSerie }) {
             {data?.map((value, index) => {
                 return (
                     <React.Fragment key={index}>
-                        {isSerie ? (
+                        {isSerie || value.type == 1 ? (
                         <ItemPopular id={value.id} title={value.name} srcImage={value.poster_path} isSerie={true} />
                         ) : (
                         <ItemPopular id={value.id} title={value.title} srcImage={value.poster_path} />

@@ -108,10 +108,12 @@
 	font-size: 18px;
 	background: none;
 	color: #fff;
+	visibility: hidden;
 }
 
 .menu.active .menu__lista input {
 	background: #424242;
+	visibility: visible;
 }
 
 .menu .menu__lista li .tooltip {
@@ -149,6 +151,16 @@
 	color: #fff;
 	font-size: 18px;
 	transition: all .5s ease;
+}
+
+.menu .menu__lista li .icono__buscar.active {
+	background: #fff;
+	color: #1a1a1a;
+}
+
+.menu.active .menu__lista li .icono__buscar.active {
+	background: none;
+	color: #fff;
 }
 
 .menu .menu__lista li .icono__buscar:hover {
