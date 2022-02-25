@@ -11,9 +11,9 @@
 .carousel__anterior {
 	position: absolute;
 	top: 0;
-	width: 35px;
+	width: 42px;
 	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.3);
 	color: #fff;
 	border: none;
 	font-size: 18px;
@@ -29,11 +29,11 @@
 }
 
 .carousel__anterior {
-	left: 28px;
+	left: 0;
 }
 
 .carousel__siguiente {
-	right: 27px;
+	right: 0;
 }
 
 .carousel__lista {
@@ -41,9 +41,13 @@
 	overflow: hidden;
 }
 
+.carousel__item {
+	/* padding: 0 30px; */
+}
+
 .carousel__item a {
 	display: block;
-	width: 90%;
+	width: 85%;
 	margin: auto;
 }
 
