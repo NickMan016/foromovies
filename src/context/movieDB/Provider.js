@@ -16,6 +16,7 @@ export default function MovieDBProvider({ children }) {
             const peliculasResponse = await movieDBApi('/search/movie', `${query}`);
             const seriesResponse = await movieDBApi('/search/tv', `${query}`);
             const busquedaResponse = [];
+            const popularityArray = [];
 
             await peliculasResponse.data.results?.map((value, index) => {
                 value.type = 0;
@@ -26,6 +27,8 @@ export default function MovieDBProvider({ children }) {
                 value.type = 1;
                 busquedaResponse.push(value);
             });
+            
+            busquedaResponse.sort((a, b) => b.popularity - a.popularity);
 
             setBusqueda(busquedaResponse);
         } catch (error) {
