@@ -1,5 +1,5 @@
 import { faBars, faFilm, faHome, faSearch, faSignInAlt, faTv, faUser } from "@fortawesome/free-solid-svg-icons";
-import { useState, KeyboardEventHandler, FormEvent, SyntheticEvent } from "react";
+import { useState, KeyboardEventHandler } from "react";
 import { useNavigate } from "react-router-dom";
 import { ItemList } from "./components/ItemList";
 import { MenuLogo } from "./components/MenuLogo";
