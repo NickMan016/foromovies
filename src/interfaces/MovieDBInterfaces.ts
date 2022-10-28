@@ -14,7 +14,8 @@ export interface MoviePopular {
     popularity: number,
     vote_count: number,
     video: boolean,
-    vote_average: number
+    vote_average: number,
+    type: number | null
 }
 
 export interface SeriePopular {
@@ -30,7 +31,8 @@ export interface SeriePopular {
     original_language: string,
     vote_count: number,
     name: string,
-    original_name: string
+    original_name: string,
+    type: number | null
 }
 
 export interface MovieDetail {
