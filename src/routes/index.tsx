@@ -1,5 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Footer } from '../components/Footer';
+import { Home } from '../components/Home';
 import { Menu } from '../components/Menu';
+import { Post } from '../components/Post';
+import { Season } from '../components/Section/components/Season';
 
 export default function Router() {
     return (
@@ -7,15 +11,15 @@ export default function Router() {
             <Menu />
             <div className="contenedor" id="contenedor">
                 <Routes>
-                    <Route path="/" element={<div>Hola a todos</div>} />
-                    <Route path="/home" element={<div>Hola a todos</div>} />
-                    {/* <Route path="/search/:query" element={<Search />} />
+                    <Route path="/"  element={<Navigate to="/home" />} />
+                    <Route path="/home"  element={<Home />} />
+                    {/* <Route path="/search/:query" element={<Search />} /> */}
                     <Route path="/movie/:id" element={<Post />} />
                     <Route path="/serie/:id/*" element={<Post isSerie={true} />} >
-                        <Route path="season/:idSeason" element={<Temporada />} />
-                    </Route> */}
+                        <Route path="season/:idSeason" element={<Season />} />
+                    </Route>
                 </Routes>
-                {/* <Footer /> */}
+                <Footer />
             </div>
         </BrowserRouter>
     );
