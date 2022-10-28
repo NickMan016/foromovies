@@ -30,7 +30,7 @@ body {
 }
 
 /* ---------------------------------- */
-/* ----------- Menu ----------- */
+/* -------------- Menu -------------- */
 /* ---------------------------------- */
 
 .menu {
@@ -248,4 +248,47 @@ body {
 .menu.active .nombre__enlace {
 	opacity: 1;
 	pointer-events: auto;
+}
+
+/* ---------------------------------- */
+/* ------------ Carousel ------------ */
+/* ---------------------------------- */
+
+.carousel__nav.glider-dots {
+	margin: 20px 0;
+}
+
+.carousel__nav .glider-dot {
+	background: rgb(115, 115, 115);
+	transition: all .4s ease;
+}
+
+.carousel__nav .glider-dot:hover {
+	background: rgb(180, 180, 180);
+}
+
+.carousel__nav .glider-dot.active {
+	background: rgb(180, 180, 180);
+}
+
+/* ---------------------------------- */
+/* ------------- Poster ------------- */
+/* ---------------------------------- */
+
+.elemento__popular .titulo__pelicula {
+	position: absolute;
+	display: block;
+	width: 100%;
+	bottom: 0;
+	padding: 1rem;
+	text-align: center;
+	font-size: 1rem;
+	color: #fff;
+	background: rgba(0, 0, 0, 0.8);
+	transition: all .3s ease;
+	opacity: 0;
+}
+
+.elemento__popular:hover .titulo__pelicula {
+	opacity: 1;
 }
