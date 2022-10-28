@@ -98,6 +98,7 @@ export const MovieDBProvider = ({ children }: ProviderProps) => {
     const [pelicula, setPelicula] = useState<MovieDetail>(INITIAL_STATE_MOVIE);
     const [serie, setSerie] = useState<SerieDetail>(INITIAL_STATE_SERIE);
     const [season, setSeason] = useState<SeasonDetail>(INITIAL_STATE_SEASON);
+    const [busqueda, setBusqueda] = useState<any>([]);
 
     const getPeliculas = async (params: string) => {
         try {
@@ -144,6 +145,30 @@ export const MovieDBProvider = ({ children }: ProviderProps) => {
         }
     }
 
+    const find = async ( query: string ) => {
+        try {
+            const peliculasResponse = await movieDBApi('/search/movie', `${query}`);
+            const seriesResponse = await movieDBApi('/search/tv', `${query}`);
+            const busquedaResponse: (MoviePopular|SeriePopular)[] = [];
+
+            await peliculasResponse?.data.results?.map((value: MoviePopular) => {
+                value.type = 0;
+                busquedaResponse.push(value);
+            });
+
+            await seriesResponse?.data.results?.map((value: SeriePopular) => {
+                value.type = 1;
+                busquedaResponse.push(value);
+            });
+            
+            busquedaResponse.sort((a, b) => b.popularity - a.popularity);
+
+            setBusqueda(busquedaResponse);
+        } catch (error) {
+            setBusqueda([]);
+        }
+    }
+
     const reset = async () => {
         setPeliculas([]);
         setSeries([]);
@@ -159,11 +184,13 @@ export const MovieDBProvider = ({ children }: ProviderProps) => {
             pelicula,
             serie,
             season,
+            busqueda,
             getPeliculas,
             getSeries,
             getPelicula,
             getSerie,
             getSeasonDetail,
+            find,
             reset
         }}>
             {children}
