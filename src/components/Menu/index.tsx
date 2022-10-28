@@ -24,7 +24,7 @@ export const Menu = () => {
             <MenuLogo onActiveMenu={handleMenuClick} icon={faBars} />
             <ul className="menu__lista">
                 <ItemList icon={faHome} name="Inicio" route="home" />
-                <ItemList icon={faSearch} name="buscar" search={true} onActiveMenu={handleMenuClick} onSearch={keyUpSearch} />
+                <ItemList icon={faSearch} name="Buscar" search={true} onActiveMenu={handleMenuClick} onSearch={keyUpSearch} />
                 <ItemList icon={faFilm} name="Películas" route="movies" />
                 <ItemList icon={faTv} name="Series" route="series" />
                 <ItemList icon={faUser} name="Perfil" route="perfil" />
