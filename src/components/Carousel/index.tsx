@@ -4,8 +4,6 @@ import GliderComponent from "react-glider"
 import { MoviePopular } from "../../interfaces/MovieDBInterfaces";
 import { ItemCarousel } from "./components/ItemsCarousel";
 
-import './glider.min.css';
-
 interface CarouselProps {
     data: MoviePopular[]
 }

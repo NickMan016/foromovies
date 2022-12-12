@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MovieDetail, MoviePopular, SeasonDetail, SerieDetail, SeriePopular } from "../interfaces/MovieDBInterfaces";
+import { Credits, MovieDetail, MoviePopular, SeasonDetail, SerieDetail, SeriePopular } from "../interfaces/MovieDBInterfaces";
 import movieDBApi from "./../api/movieDB";
 import { MovieDBContext } from "./MovieDBContext";
 
@@ -93,11 +93,18 @@ export const MovieDBProvider = ({ children }: ProviderProps) => {
         season_number: 0
     }
 
+    const INITIAL_STATE_CREDITS: Credits = {
+        id: 0,
+        cast: [],
+        crew: []
+    }
+
     const [peliculas, setPeliculas] = useState<MoviePopular[]>([]);
     const [series, setSeries] = useState<SeriePopular[]>([]);
     const [pelicula, setPelicula] = useState<MovieDetail>(INITIAL_STATE_MOVIE);
     const [serie, setSerie] = useState<SerieDetail>(INITIAL_STATE_SERIE);
     const [season, setSeason] = useState<SeasonDetail>(INITIAL_STATE_SEASON);
+    const [credits, setCredits] = useState<Credits>(INITIAL_STATE_CREDITS);
     const [busqueda, setBusqueda] = useState<any>([]);
 
     const getPeliculas = async (params: string) => {
@@ -145,6 +152,15 @@ export const MovieDBProvider = ({ children }: ProviderProps) => {
         }
     }
 
+    const getCredits = async ( params: string ) => {
+        try {
+            const creditsResponse = await movieDBApi(`/${params}/credits`);
+            setCredits(creditsResponse?.data);
+        } catch (error) {
+            setCredits(INITIAL_STATE_CREDITS);
+        }
+    }
+
     const find = async ( query: string ) => {
         try {
             const peliculasResponse = await movieDBApi('/search/movie', `${query}`);
@@ -175,6 +191,7 @@ export const MovieDBProvider = ({ children }: ProviderProps) => {
         setPelicula(INITIAL_STATE_MOVIE);
         setSerie(INITIAL_STATE_SERIE);
         setSeason(INITIAL_STATE_SEASON);
+        setCredits(INITIAL_STATE_CREDITS);
     }
 
     return (
@@ -184,12 +201,14 @@ export const MovieDBProvider = ({ children }: ProviderProps) => {
             pelicula,
             serie,
             season,
+            credits,
             busqueda,
             getPeliculas,
             getSeries,
             getPelicula,
             getSerie,
             getSeasonDetail,
+            getCredits,
             find,
             reset
         }}>

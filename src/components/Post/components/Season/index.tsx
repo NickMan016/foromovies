@@ -31,7 +31,7 @@ export const Season = () => {
                     <>
                         {
                             season.episodes.map((value, index) => (
-                                <Chapter key={index} title={value.name} bgImage={value.still_path} index={value.episode_number} />
+                                <Chapter key={index} title={value.name} bgImage={value.still_path} index={value.episode_number} synopsis={value.overview} guest_actors={value.guest_stars} />
                             ))
                         }
                     </>
